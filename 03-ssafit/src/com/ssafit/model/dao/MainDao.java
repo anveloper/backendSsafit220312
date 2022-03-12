@@ -26,6 +26,8 @@ public class MainDao implements MainDaoImpl {
 				"https://www.youtube.com/embed/PjGcOP-TQPE"));
 		list.add(new Video("(Sub)누워서하는 5분 복부운동!! 효과보장! (매일 2주만 해보세요!)", "복부", "7TLk7pscICk", "SomiFit",
 				"https://www.youtube.com/embed/7TLk7pscICk"));
+		list.add(new Video("저는 하체 식주의자 입니다", "하체", "u5OgcZdNbMo", "GYM종국",
+				"https://www.youtube.com/embed/u5OgcZdNbMo"));
 	}
 
 	public static MainDao getInstance() {

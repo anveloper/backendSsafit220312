@@ -215,25 +215,29 @@
 					aria-label="Basic radio toggle button group" id="partSelect">
 					<!--  -->
 					<input type="radio" class="btn-check" name="btnradio"
-						id="btnradio1" autocomplete="off" value="wlist">
+						id="btnradio1" autocomplete="off" value="전신">
 					<!--  -->
 					<label class="btn btn-outline-secondary" for="btnradio1">전신</label>
 					<!--  -->
 					<input type="radio" class="btn-check" name="btnradio"
-						id="btnradio2" autocomplete="off" value="ulist">
+						id="btnradio2" autocomplete="off" value="상체">
 					<!--  -->
 					<label class="btn btn-outline-secondary" for="btnradio2">상체</label>
 					<!--  -->
 					<input type="radio" class="btn-check" name="btnradio"
-						id="btnradio3" autocomplete="off" value="llist">
+						id="btnradio3" autocomplete="off" value="하체">
 					<!--  -->
 					<label class="btn btn-outline-secondary" for="btnradio3">하체</label>
+					<input type="radio" class="btn-check" name="btnradio"
+						id="btnradio4" autocomplete="off" value="복부">
+					<!--  -->
+					<label class="btn btn-outline-secondary" for="btnradio4">복부</label>
 				</div>
 			</div>
 
 			<!-- 버튼 밸류에 따라 전신 : wlist, 상체 : ulist, 하체 : llist 바꾸기 -->
 			<div class="d-flex justify-content-start flex-row overflow-auto" id="fitPart">
-				<c:forEach var="v2" items="${ulist}">
+				<c:forEach var="v2" items="${wlist}">
 					<div class="p-2 w-380" style="width: 390px;">
 						<div>
 							<iframe width="380" height="230"
@@ -267,37 +271,35 @@
 		</footer>
 	</div>
 
-	<script>
-				document.getElementsByName("btnradio").forEach(btn => btn.addEventListener('click',()=>{
-					console.log(btn.value);
-					console.log("\${"+btn.value+"}");
-					document.getElementById("fitPart").firstChild.items = "\${"+btn.value+"}";
-					/* $('#fitPart').load(location.href+' #fitPart'); */
-					/* selectPart(btn.value); */
-				}));
-				// AJAX 연습..
-				function selectPart(fitPart) {
-					let xhr = new XMLHttpRequest();
-					xhr.onreadystatechange = () => {
-						if (xhr.readyState == 4 && xhr.status == 200) {
-							let part = "wlist";
-							console.log(xhr.responseText);
-							if(xhr.responseText=='wlist'){
-								part = "wlist";
-							} else if(xhr.responseText=='ulist'){
-								part = "ulist";
-							} else if(xhr.responseText=='llist'){
-								part = "llist";
-							}	
-							document.getElementById("fitPart").firstChild.items = "\${"+part+"}";
-							console.log(document.getElementById("fitPart").firstChild.items)
-							$('#fitPart').load(location.href+' #fitPart');
-						}
-					}
-					xhr.open("GET", "selectpart?fitPart=" + fitPart);
-					xhr.send(null);					
-				};
-			</script>
+	<script src="/03-ssafit/js/selectPart.js">/* js로 만들어둠 */
+		document.getElementsByName("btnradio").forEach(btn => btn.addEventListener('click',()=>{
+			console.log(btn.value);
+			document.getElementById("fitPart").firstChild.items = "\${"+btn.value+"}";
+			/* $('#fitPart').load(location.href+' #fitPart'); */
+			/* selectPart(btn.value); */
+		}));
+		// AJAX 로 서블릿의 배열에서 불러오려했으나, 실패... js로 다른 곳에서 불러옴....
+		function selectPart(fitPart) {
+			let xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = () => {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					let part = "wlist";
+					console.log(xhr.responseText);
+					if(xhr.responseText=='wlist'){
+						part = "wlist";
+					} else if(xhr.responseText=='ulist'){
+						part = "ulist";
+					} else if(xhr.responseText=='llist'){
+						part = "llist";
+					}	
+					document.getElementById("fitPart").firstChild.items = "\${"+part+"}";
+					$('#fitPart').load(location.href+' #fitPart');
+				}
+			}
+			xhr.open("GET", "selectpart?fitPart=" + fitPart);
+			xhr.send(null);					
+		};
+	</script>
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 	<!-- JavaScript Bundle with Popper -->

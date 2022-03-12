@@ -21,6 +21,7 @@ public class MainController extends HttpServlet {
 		req.setAttribute("wlist", MainDao.getInstance().selectPartFitVideo("전신"));
 		req.setAttribute("ulist", MainDao.getInstance().selectPartFitVideo("상체"));
 		req.setAttribute("llist", MainDao.getInstance().selectPartFitVideo("하체"));
+		req.setAttribute("clist", MainDao.getInstance().selectPartFitVideo("복부"));
 				
 		req.getRequestDispatcher("main.jsp").forward(req, res);
 	}
