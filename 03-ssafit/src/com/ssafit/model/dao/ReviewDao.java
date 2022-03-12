@@ -53,4 +53,9 @@ public class ReviewDao {
 		}
 		return r;
 	}
+
+	public void deleteReview(int no) {
+
+		
+	}
 }

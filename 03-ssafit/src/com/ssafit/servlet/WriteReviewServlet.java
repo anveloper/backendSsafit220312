@@ -1,4 +1,4 @@
-package com.ssafit.review;
+package com.ssafit.servlet;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class WriteReviewServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		req.setAttribute("youtubeId", req.getParameter("youtubeId"));
 		req.getRequestDispatcher("write.jsp").forward(req, res);
 
 	}
@@ -29,7 +29,8 @@ public class WriteReviewServlet extends HttpServlet {
 		ReviewDao.getInstance()
 				.insertReview(new Review(req.getParameter("youtubeId"),
 						(req.getParameter("title").length() == 0 ? "(제목없음)" : req.getParameter("title")),
-						req.getParameter("writer"), req.getParameter("content")));
-		res.sendRedirect("/03-ssafit/ssafit/list");
+						req.getParameter("writer"), req.getParameter("content")));	
+		
+		res.sendRedirect("/03-ssafit/ssafit/detail?youtubeId=" + req.getParameter("youtubeId"));
 	}
 }

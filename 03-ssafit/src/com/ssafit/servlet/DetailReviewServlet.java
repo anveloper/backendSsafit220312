@@ -1,4 +1,4 @@
-package com.ssafit.review;
+package com.ssafit.servlet;
 
 import java.io.IOException;
 
@@ -20,8 +20,9 @@ public class DetailReviewServlet extends HttpServlet {
 		int no = Integer.parseInt(req.getParameter("no"));
 
 		Review review = ReviewDao.getInstance().getReviewByNo(no);
-		
-		req.setAttribute("review", review);		
+		review.upViewCnt();
+		req.setAttribute("youtubeId", req.getParameter("youtubeId"));
+		req.setAttribute("review", review);
 		
 		req.getRequestDispatcher("detail.jsp").forward(req, res);
 	}
