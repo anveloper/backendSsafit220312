@@ -171,11 +171,12 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<br>
+			
 			<div>
 				<!-- <a href="/02-board/board/write">글쓰기</a> -->
-				<a class="btn btn-secondary" href="write">글쓰기</a>
+				<a class="btn btn-secondary" href="review/write">글쓰기</a>
 			</div>
+			<br>
 		</div>
 	</div>
 

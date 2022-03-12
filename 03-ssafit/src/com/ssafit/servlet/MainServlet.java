@@ -16,9 +16,12 @@ public class MainServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		String part ="하체";
+				
 		req.setAttribute("ilist", MainDao.getInstance().selectInterestViewFitVideo());
-		req.setAttribute("plist", MainDao.getInstance().selectPartFitVideo(part));
+		req.setAttribute("alist", MainDao.getInstance().selectPartFitVideo("전신"));
+		req.setAttribute("ulist", MainDao.getInstance().selectPartFitVideo("상체"));
+		req.setAttribute("dlist", MainDao.getInstance().selectPartFitVideo("하체"));
+				
 		req.getRequestDispatcher("main.jsp").forward(req, res);
 	}
 

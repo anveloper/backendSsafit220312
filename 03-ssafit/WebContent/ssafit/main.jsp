@@ -209,21 +209,24 @@
 			<!-- 버튼 기능 아직 못만듬.(현재 하체로 선택된 목록 뜸) AJAX 도전 예정 -->
 			<div class="h3">
 				운동 부위 선택
-				<div class="btn-group" role="group"
-					aria-label="Basic radio toggle button group">
-					<input type="radio" class="btn-check" name="btnradio"
-						id="btnradio1" autocomplete="off"> <label
-						class="btn btn-outline-secondary" for="btnradio1">전신</label> <input
-						type="radio" class="btn-check" name="btnradio" id="btnradio2"
-						autocomplete="off"> <label
-						class="btn btn-outline-secondary" for="btnradio2">상체</label> <input
-						type="radio" class="btn-check" name="btnradio" id="btnradio3"
-						autocomplete="off"> <label
-						class="btn btn-outline-secondary" for="btnradio3">하체</label>
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="partSelect" >
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="전신"> 
+					<label class="btn btn-outline-secondary" for="btnradio1">전신</label>
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="상체"> 
+					<label class="btn btn-outline-secondary" for="btnradio2">상체</label>
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="하체"> 
+					<label class="btn btn-outline-secondary" for="btnradio3">하체</label>
 				</div>
 			</div>
+			<!-- 부위 선택 시 영상 목록 바꾸기 -->
+			<script>
+				document.getElementsByName("btnradio").forEach(element => element.addEventListener("click", () =>{
+					console.log(element.value);	
+				}));
+			</script>
+			
 			<div class="d-flex overflow-auto">
-				<c:forEach var="v" items="${plist}">
+				<c:forEach var="v" items="${dlist}" >
 					<div class="container w-380">
 						<div>
 							<iframe width="380" height="230"
