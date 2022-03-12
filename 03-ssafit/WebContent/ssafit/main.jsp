@@ -185,9 +185,9 @@
 			<br>
 
 			<div class="h3">최근 가장 많이 본 영상</div>
-			<div class="d-flex overflow-auto">
-				<c:forEach var="v" items="${ilist}">
-					<div class="container w-380">
+			<div class="d-flex flex-row overflow-auto ">
+				<c:forEach var="v" items="${requestScope.ilist}">
+					<div class="p-2 " style="width: 390px;">
 						<div>
 							<iframe width="380" height="230"
 								src="https://www.youtube.com/embed/${v.youtubeId}"
@@ -207,47 +207,48 @@
 			</div>
 
 			<br>
+
 			<!-- 버튼 기능 아직 못만듬.(현재 하체로 선택된 목록 뜸) AJAX 도전 예정 -->
 			<div class="h3">
 				운동 부위 선택
 				<div class="btn-group" role="group"
 					aria-label="Basic radio toggle button group" id="partSelect">
+					<!--  -->
 					<input type="radio" class="btn-check" name="btnradio"
-						id="btnradio1" autocomplete="off" value="전신"> <label
-						class="btn btn-outline-secondary" for="btnradio1">전신</label> <input
-						type="radio" class="btn-check" name="btnradio" id="btnradio2"
-						autocomplete="off" value="상체"> <label
-						class="btn btn-outline-secondary" for="btnradio2">상체</label> <input
-						type="radio" class="btn-check" name="btnradio" id="btnradio3"
-						autocomplete="off" value="하체"> <label
-						class="btn btn-outline-secondary" for="btnradio3">하체</label>
+						id="btnradio1" autocomplete="off" value="wlist">
+					<!--  -->
+					<label class="btn btn-outline-secondary" for="btnradio1">전신</label>
+					<!--  -->
+					<input type="radio" class="btn-check" name="btnradio"
+						id="btnradio2" autocomplete="off" value="ulist">
+					<!--  -->
+					<label class="btn btn-outline-secondary" for="btnradio2">상체</label>
+					<!--  -->
+					<input type="radio" class="btn-check" name="btnradio"
+						id="btnradio3" autocomplete="off" value="llist">
+					<!--  -->
+					<label class="btn btn-outline-secondary" for="btnradio3">하체</label>
 				</div>
 			</div>
-			<!-- 부위 선택 시 영상 목록 바꾸기 -->
-			<script>
-				document.getElementsByName("btnradio").forEach(element => element.addEventListener("click", () =>{
-					console.log(element.value);	
-				}));
-			</script><!-- 버튼 밸류에 따라 전신 : alist, 상체 : ulist, 하체 : dlist 바꾸기 -->
-			<%
-				List<Video> plist = (List<Video>) request.getAttribute("dlist");
-			%>
-			<div class="d-flex overflow-auto">
-				<c:forEach var="v" items="<%=plist%>">
-					<div class="container w-380">
+
+			<!-- 버튼 밸류에 따라 전신 : wlist, 상체 : ulist, 하체 : llist 바꾸기 -->
+			<div class="d-flex justify-content-start flex-row overflow-auto" id="fitPart">
+				<c:forEach var="v2" items="${ulist}">
+					<div class="p-2 w-380" style="width: 390px;">
 						<div>
 							<iframe width="380" height="230"
-								src="https://www.youtube.com/embed/${v.youtubeId}"
+								src="https://www.youtube.com/embed/${v2.youtubeId}"
 								title="YouTube video player" frameborder="0"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowfullscreen></iframe>
 						</div>
-						<div class="row">
-							<a class="col video-title" href="detail?youtubeId=${v.youtubeId}">${v.title}</a>
+						<div class="row" style="width: 380px;">
+							<a class="col video-title" href="detail?youtubeId=${v2.youtubeId}">${v2.title}</a>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
+
 			<br>
 		</div>
 	</div>
@@ -266,7 +267,39 @@
 		</footer>
 	</div>
 
-
+	<script>
+				document.getElementsByName("btnradio").forEach(btn => btn.addEventListener('click',()=>{
+					console.log(btn.value);
+					console.log("\${"+btn.value+"}");
+					document.getElementById("fitPart").firstChild.items = "\${"+btn.value+"}";
+					/* $('#fitPart').load(location.href+' #fitPart'); */
+					/* selectPart(btn.value); */
+				}));
+				// AJAX 연습..
+				function selectPart(fitPart) {
+					let xhr = new XMLHttpRequest();
+					xhr.onreadystatechange = () => {
+						if (xhr.readyState == 4 && xhr.status == 200) {
+							let part = "wlist";
+							console.log(xhr.responseText);
+							if(xhr.responseText=='wlist'){
+								part = "wlist";
+							} else if(xhr.responseText=='ulist'){
+								part = "ulist";
+							} else if(xhr.responseText=='llist'){
+								part = "llist";
+							}	
+							document.getElementById("fitPart").firstChild.items = "\${"+part+"}";
+							console.log(document.getElementById("fitPart").firstChild.items)
+							$('#fitPart').load(location.href+' #fitPart');
+						}
+					}
+					xhr.open("GET", "selectpart?fitPart=" + fitPart);
+					xhr.send(null);					
+				};
+			</script>
+	<script type="text/javascript"
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 	<!-- JavaScript Bundle with Popper -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

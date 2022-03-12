@@ -1,4 +1,4 @@
-package com.ssafit.servlet;
+package com.ssafit.model.video;
 
 import java.io.IOException;
 import java.util.List;

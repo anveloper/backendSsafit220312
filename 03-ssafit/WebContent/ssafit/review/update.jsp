@@ -144,17 +144,20 @@
 			action="/03-ssafit/ssafit/review/update?youtubeId=${youtubeId}&no=${review.no}">
 			<div class="container">
 				<div class="form-floating">
-					<textarea class="form-control" name="title"><c:out
+					<textarea class="form-control" name="title" id="floatingTextarea1"><c:out
 							value="${review.title}" /></textarea>
+					<label for="floatingTextarea1">제목</label>
 				</div>
 				<div class="form-floating">
-					<textarea class="form-control" name="writer"><c:out
+					<textarea class="form-control" name="writer" id="floatingTextarea2"><c:out
 							value="${review.writer}" /></textarea>
+					<label for="floatingTextarea2">작성자</label>
 				</div>
 
 				<div class="form-floating">
-					<textarea class="form-control" style="height: 400px" name="content"><c:out
-							value="${review.content}" /></textarea>
+					<textarea class="form-control" style="height: 400px" name="content"
+						id="floatingTextarea3"><c:out value="${review.content}" /></textarea>
+					<label for="floatingTextarea3">내용</label>
 				</div>
 				<div style="padding-top: 10px;">
 					<button class="btn btn-secondary">등록</button>

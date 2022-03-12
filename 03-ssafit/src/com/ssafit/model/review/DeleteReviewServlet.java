@@ -1,4 +1,4 @@
-package com.ssafit.servlet;
+package com.ssafit.model.review;
 
 import java.io.IOException;
 
@@ -8,23 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ssafit.model.Review;
 import com.ssafit.model.dao.ReviewDao;
 
-@WebServlet("/ssafit/review/detail")
-public class DetailReviewServlet extends HttpServlet {
+@WebServlet("/ssafit/review/delete")
+public class DeleteReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		int no = Integer.parseInt(req.getParameter("no"));
 
-		Review review = ReviewDao.getInstance().getReviewByNo(no);
-		review.upViewCnt();
-		req.setAttribute("youtubeId", req.getParameter("youtubeId"));
-		req.setAttribute("review", review);
-		
-		req.getRequestDispatcher("detail.jsp").forward(req, res);
-	}
+		ReviewDao.getInstance().deleteReview(no);
 
+		res.sendRedirect("/03-ssafit/ssafit/detail?youtubeId=" + req.getParameter("youtubeId"));
+	}
 }
