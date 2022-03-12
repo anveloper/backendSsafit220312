@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ssafit.model.dao.ReviewDao;
 
-@WebServlet("/board/delete")
+@WebServlet("/ssafit/review/delete")
 public class DeleteReviewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -20,6 +20,6 @@ public class DeleteReviewServlet extends HttpServlet {
 
 		ReviewDao.getInstance().deleteReview(no);
 
-		res.sendRedirect("/02-board/board/list");
+		res.sendRedirect("/03-ssafit/ssafit/detail?youtubeId=" + req.getParameter("youtubeId"));
 	}
 }

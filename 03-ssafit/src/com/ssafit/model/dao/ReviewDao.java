@@ -55,7 +55,12 @@ public class ReviewDao {
 	}
 
 	public void deleteReview(int no) {
-
+		for (Review v : list) {
+			if (v.getNo() == no) {
+				list.remove(v);
+				break;
+			}
+		}
 		
 	}
 }
