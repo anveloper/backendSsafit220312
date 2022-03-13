@@ -12,8 +12,8 @@ public class ReviewDao {
 
 	private ReviewDao() {
 		insertReview(new Review("gMaB-fG4u4g", "너무 1재미있네요", "홍길동", "세부 내용을 적는 1창입니다."));
-		insertReview(new Review("gMaB-fG4u4g", "너무 2재미있네요", "홍길순", "세부 내용을 적는 2창입니다."));
-		insertReview(new Review("gMaB-fG4u4g", "너무 3재미있네요", "김길동", "세부 내용을 적는 3창입니다."));
+		insertReview(new Review("gMaB-fG4u4g", "너무 2재미있네요", "홍길순", "내용을 적는 2창입니다."));
+		insertReview(new Review("gMaB-fG4u4g", "너무 3재밌네요", "김길동", "세부 내용 3창입니다."));
 		insertReview(new Review("gMaB-fG4u4g", "너무 4재미있네요", "박길동", "세부 내용을 적는 4창입니다."));
 		insertReview(new Review("gMaB-fG4u4g", "너무 5재미있네요", "남길동", "세부 내용을 적는 5창입니다."));
 		insertReview(new Review("gMaB-fG4u4g", "너무 6재미있네요", "동길동", "세부 내용을 적는 6창입니다."));

@@ -117,7 +117,7 @@
 	</main>
 	<jsp:include page="footer.jsp" flush="false" />
 
-	<script src="/03-ssafit/js/selectPart.js">/* js로 만들어둠 */
+	<script src="/03-ssafit/js/selectPart.js">/* js로 만들어둠 아래 실행 안됨*/
 		document.getElementsByName("btnradio").forEach(btn => btn.addEventListener('click',()=>{
 			console.log(btn.value);
 			document.getElementById("fitPart").firstChild.items = "\${"+btn.value+"}";
