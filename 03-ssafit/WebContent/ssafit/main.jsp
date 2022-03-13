@@ -4,6 +4,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -22,159 +26,10 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
-	<!-- 메인 네비게이션 -->
-	<div class="container">
-		<header
-			class="d-flex align-items-end justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-			<a href="#"
-				class="d-flex align-items-center   text-dark text-decoration-none">
-				<h1>SSAFIT</h1>
-			</a>
-
-			<div class=" d-flex flex-row justify-content-end">
-				<div class="p-2">
-					<button type="button" class="btn btn-outline-secondary me-2"
-						data-bs-toggle="modal" data-bs-target="#staticBackdropLogin">로그인</button>
-				</div>
-				<div class="p-2">
-					<button type="button" class="btn btn-secondary"
-						data-bs-toggle="modal" data-bs-target="#staticBackdropSighIn">회원가입</button>
-				</div>
-			</div>
-
-			<!-- Modal -->
-			<div class="modal fade" id="staticBackdropLogin"
-				data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-				aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="staticBackdropLabel">로그인</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<form>
-								<div class="row mb-3">
-									<label for="email-login" class="col-sm-2 col-form-label">ID</label>
-									<div class="col-sm-10">
-										<input type="email" class="form-control" id="email-login">
-									</div>
-								</div>
-								<div class="row mb-3">
-									<label for="password-login" class="col-sm-2 col-form-label">P/W</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control"
-											id="password-login">
-									</div>
-								</div>
-								<div class="row mb-3">
-									<div class="col-sm-10 offset-sm-2">
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox"
-												id="gridCheck1"> <label class="form-check-label"
-												for="gridCheck1"> 아이디 저장 </label>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-dark">로그인</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Modal -->
-			<div class="modal fade" id="staticBackdropSighIn"
-				data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-				aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="staticBackdropLabel">회원가입</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<form>
-								<div class="row mb-3">
-									<label for="email-signin" class="col-sm-2 col-form-label">ID</label>
-									<div class="col-sm-10">
-										<input type="email" class="form-control" id="email-signin"
-											placeholder="example@html.com">
-									</div>
-								</div>
-								<div class="row mb-3">
-									<label for="password-signin" class="col-sm-2 col-form-label">P/W</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control"
-											id="password-signin">
-									</div>
-								</div>
-
-								<div class="row mb-3">
-									<label for="passwordc-signin" class="col-sm-2 col-form-label">P/W
-										confirm</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control"
-											id="passwordc-signin">
-									</div>
-								</div>
-
-								<div class="row mb-3">
-									<label for="name-signin" class="col-sm-2 col-form-label">닉네임</label>
-									<div class="col-sm-10">
-										<input type="name" class="form-control" id="name-signin">
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-dark">회원가입</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</header>
-	</div>
-	<!-- 메인화면 배너 슬라이드 -->
-	<div id="carouselExampleControls" class="carousel slide"
-		data-bs-ride="carousel" style="height: 450px; overflow: hidden;">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img
-					src="https://cdn.mindgil.com/news/photo/202006/69358_3455_1528.jpg"
-					class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img
-					src="https://www.ftimes.kr/news/photo/202110/13399_15007_15.jpg"
-					class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img
-					src="https://i0.wp.com/pusyap.com/wp-content/uploads/2020/02/%EC%9A%B4%EB%8F%99_%EC%9E%98%EB%AA%BB%EB%90%9C-%EC%83%9D%EA%B0%81.jpg"
-					class="d-block w-100" alt="...">
-			</div>
-		</div>
-		<button class="carousel-control-prev" type="button"
-			data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button"
-			data-bs-target="#carouselExampleControls" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Next</span>
-		</button>
-	</div>
+	<jsp:include page="header.jsp" flush="false">
+		<jsp:param name="pageTitle" value="SSAFIT" />
+	</jsp:include>
+	<jsp:include page="slide.jsp" flush="false" />	
 	<!-- 여기서부터 메인 시작 -->
 	<main>
 	<div class="container">
@@ -236,7 +91,8 @@
 			</div>
 
 			<!-- 버튼 밸류에 따라 전신 : wlist, 상체 : ulist, 하체 : llist 바꾸기 -->
-			<div class="d-flex justify-content-start flex-row overflow-auto" id="fitPart">
+			<div class="d-flex justify-content-start flex-row overflow-auto"
+				id="fitPart">
 				<c:forEach var="v2" items="${wlist}">
 					<div class="p-2 w-380" style="width: 390px;">
 						<div>
@@ -247,7 +103,8 @@
 								allowfullscreen></iframe>
 						</div>
 						<div class="row" style="width: 380px;">
-							<a class="col video-title" href="detail?youtubeId=${v2.youtubeId}">${v2.title}</a>
+							<a class="col video-title"
+								href="detail?youtubeId=${v2.youtubeId}">${v2.title}</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -258,18 +115,7 @@
 	</div>
 
 	</main>
-
-	<div>
-		<footer>
-			<!-- 정보 -->
-			<ul>
-				<li><a href="">개인정보처리방침</a></li>
-				<li><a href="">이용약관</a></li>
-				<li><a href="">오시는길</a></li>
-				<li>ⓒ SSAFY SSAFIT_JAVA_대전_4반_4팀_박범수_안성진</li>
-			</ul>
-		</footer>
-	</div>
+	<jsp:include page="footer.jsp" flush="false" />
 
 	<script src="/03-ssafit/js/selectPart.js">/* js로 만들어둠 */
 		document.getElementsByName("btnradio").forEach(btn => btn.addEventListener('click',()=>{
