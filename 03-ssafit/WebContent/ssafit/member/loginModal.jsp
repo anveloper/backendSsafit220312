@@ -19,25 +19,29 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form>
+					<form id="loginForm" name="loginForm" method="post"
+						action="member/login">
 						<div class="row mb-3">
-							<label for="email-login" class="col-sm-2 col-form-label">ID</label>
+							<label for="loginId" class="col-sm-2 col-form-label">ID</label>
 							<div class="col-sm-10">
-								<input type="email" class="form-control" id="email-login">
+								<input type="id" class="form-control" id="loginId" name="userId">
 							</div>
+							<div id="loginIdMsg" style="color: red;"></div>
 						</div>
 						<div class="row mb-3">
-							<label for="password-login" class="col-sm-2 col-form-label">P/W</label>
+							<label for="loginPassword" class="col-sm-2 col-form-label">P/W</label>
 							<div class="col-sm-10">
-								<input type="password" class="form-control" id="password-login">
+								<input type="password" class="form-control" id="loginPassword"
+									name="password">
 							</div>
+							<div id="loginPwMsg" style="color: red;"></div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-sm-10 offset-sm-2">
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" id="gridCheck1">
-									<label class="form-check-label" for="gridCheck1"> 아이디
-										저장 </label>
+									<input class="form-check-input" type="checkbox" id="saveIdBtn"
+										name="checkId"> <label class="form-check-label"
+										for="saveIdBtn"> 아이디 저장 </label>
 								</div>
 							</div>
 						</div>
@@ -46,11 +50,12 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-dark">로그인</button>
+					<button id="loginBtn" type="button" class="btn btn-dark"
+						onclick="sendIt()">로그인</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<script src="/03-ssafit/js/userLogin.js"></script>
 </body>
 </html>

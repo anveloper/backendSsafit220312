@@ -57,4 +57,9 @@ public class Member {
 	public void deleteInterestVideo(String interestVideoYoutubeId) {
 		this.interestVideos.remove(new String(interestVideoYoutubeId));
 	}
+
+	@Override
+	public String toString() {
+		return "userId : " + this.userId + "\npassword : " + this.password + "\nnickname : " + this.nickname;
+	}
 }

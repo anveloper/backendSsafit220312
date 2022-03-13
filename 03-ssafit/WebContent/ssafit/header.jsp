@@ -1,8 +1,12 @@
+<%@ page import="com.ssafit.model.Member"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String pageTitle = request.getParameter("pageTitle");
+	Member logonMember = (Member) session.getAttribute("logonMember");
 %>
 <!DOCTYPE html>
 <html>
@@ -20,20 +24,36 @@
 				<h1><%=pageTitle%></h1>
 			</a>
 
-			<div class=" d-flex flex-row justify-content-end">
-				<div class="p-2">
-					<button type="button" class="btn btn-outline-secondary me-2"
-						data-bs-toggle="modal" data-bs-target="#login">로그인</button>
+			<!-- 로그인/회원가입 -->
+			<div id="logoutHeader">
+				<div class=" d-flex flex-row justify-content-end"">
+					<div class="p-2">
+						<button type="button" class="btn btn-outline-secondary me-2"
+							data-bs-toggle="modal" data-bs-target="#login">로그인</button>
+					</div>
+					<div class="p-2">
+						<button type="button" class="btn btn-secondary"
+							data-bs-toggle="modal" data-bs-target="#sighIn">회원가입</button>
+					</div>
 				</div>
-				<div class="p-2">
-					<button type="button" class="btn btn-secondary"
-						data-bs-toggle="modal" data-bs-target="#sighIn">회원가입</button>
-				</div>
+				<jsp:include page="member/loginModal.jsp" flush="false" />
+				<jsp:include page="member/joinModal.jsp" flush="false" />
 			</div>
+			<!-- 로그아웃/마이페이지 -->
+			<div id="logonHeader" style="display: none;">
+				<div class=" d-flex flex-row justify-content-end">
+					<div class="p-2">
+						<button type="button" class="btn btn-outline-secondary me-2"
+							data-bs-toggle="modal" onclick="logout()">로그아웃</button>
+					</div>
+					<div class="p-2">
+						<button type="button" class="btn btn-secondary"
+							data-bs-toggle="modal" data-bs-target="#mypage">마이페이지</button>
+					</div>
+				</div>
 
-			<jsp:include page="member/loginModal.jsp" flush="false" />
-
-			<jsp:include page="member/joinModal.jsp" flush="false" />
+				<jsp:include page="member/mypageModal.jsp" flush="false" />
+			</div>
 		</header>
 	</div>
 </body>

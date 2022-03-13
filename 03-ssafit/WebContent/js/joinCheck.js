@@ -114,7 +114,7 @@ function requestNickCheck(nickVal){
 			} else if(resp == 'long') {
 				msg = "8자 이하만 가능합니다.";					
 			} else if(resp == 'exist') {
-				msg = "사용중인 닉네임입니다..";
+				msg = "사용중인 닉네임입니다.";
 				ms.style.color = 'red';
 			} else if(resp == 'pass') {
 				msg = "사용 가능한 닉네임입니다.";

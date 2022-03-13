@@ -14,6 +14,7 @@ public class MemberDao {
 
 	private MemberDao() {
 		doJoinMember(new Member("admin", "admin", "관리자"));
+		doJoinMember(new Member("asdf", "asdf", "만능임시아이디"));
 	}
 
 	public static MemberDao getInstance() {
@@ -29,14 +30,23 @@ public class MemberDao {
 		list.add(member);
 	}
 
+	public Member getMemberByUserId(String userId, String password) {
+		Member rst = null;
+		for (Member m : list) {
+			if (m.getUserId().equals(userId) && m.getPassword().equals(password))
+				rst = m;
+		}
+		return rst;
+	}
+
 	public boolean isExistedUserId(String userId) {
 		return idList.contains(userId);
 	}
-	
+
 	public boolean isExistedNickname(String nickname) {
 		return nameList.contains(nickname);
 	}
-	
+
 	public int isAvailableUserId(String userId) {
 		if (userId.charAt(0) < 'a' || userId.charAt(0) > 'z')
 			return 1; // 첫글자가 숫자면 1
@@ -58,12 +68,11 @@ public class MemberDao {
 		return 0;
 	}
 
-
 	public int isAvailablePassword(String password) {
 		if (password.length() < 8)
 			return 1; // 길이가 짧으면 1
 		else if (password.length() > 20)
-			return 2; 
+			return 2;
 		else {
 			for (char c : password.toCharArray()) {
 				boolean flag = false;
@@ -82,8 +91,9 @@ public class MemberDao {
 		if (nickname.length() < 2)
 			return 1; // 길이가 짧으면 2
 		else if (nickname.length() > 8)
-			return 2;		
+			return 2;
 		// 여기까지 왔으면 가능한 ID
 		return 0;
 	}
+	
 }
