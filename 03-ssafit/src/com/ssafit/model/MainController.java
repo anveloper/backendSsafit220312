@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ssafit.model.dao.MainDao;
 
@@ -24,6 +25,14 @@ public class MainController extends HttpServlet {
 		req.setAttribute("clist", MainDao.getInstance().selectPartFitVideo("복부"));
 				
 		req.getRequestDispatcher("main.jsp").forward(req, res);
+	}
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		HttpSession ss = req.getSession();
+		Member m = (Member) ss.getAttribute("logonMember");
+		System.out.println("main : \n" + m.toString());
+		doGet(req, res);
 	}
 
 }

@@ -29,20 +29,29 @@ public class LoginMemberServlet extends HttpServlet {
 		MemberDao md = MemberDao.getInstance();
 		String userId = req.getParameter("userId");
 		String password = req.getParameter("password");
-
+		// 아이디가 없거나, 비밀번호가 맞지 않으면 null
 		Member member = md.getMemberByUserId(userId, password);
-		
+
 		if (md.isExistedUserId(userId) && member != null) {
 			System.out.println(member.toString());
+			// 뭘해야 크롬 세션에도 정보가 들어갈까..
 			ss.setAttribute("logonMember", member);
-			res.sendRedirect("/03-ssafit/ssafit/main");
-		} else {
+			ss.setAttribute("logonMemberId", member.getUserId());
+			ss.setAttribute("logonMemberNick", member.getNickname());
+			req.setAttribute("logonMember", member);
+			req.setAttribute("logonMemberId", member.getUserId());
+			req.setAttribute("logonMemberName", member.getNickname());
+			req.getRequestDispatcher("/ssafit/main").forward(req, res);
+//			res.sendRedirect("/03-ssafit/ssafit/main");
+		} else { // 로그인 실패
+			System.out.println("login fail");
 			out.println("<script>alert('없는 아이디 이거나 잘못된 패스워드입니다.'); location.href='" + "/03-ssafit/ssafit/main"
 					+ "';</script>");
-			out.close();
-			return;
 		}
+		if (ss.getAttribute("logonMember") != null)
+			System.out.println("지금 세션에 정보가 있는 지\n" + ss.getAttribute("logonMember").toString());
 
+		out.close();
 	}
 
 }
