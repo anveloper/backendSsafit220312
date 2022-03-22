@@ -13,9 +13,12 @@
 	font-family: 'ROKAFSlabSerifBold';
 }
 
-.video-title {
+a {
+	text-decoration-line: none !important;
+}
+
+.video-title * {
 	color: black;
-	text-decoration-line: none;
 }
 
 footer>ul {

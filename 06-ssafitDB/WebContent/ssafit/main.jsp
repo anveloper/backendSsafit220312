@@ -8,7 +8,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	session.setAttribute("logonMember", (Member) request.getAttribute("logonMember"));
-
 %>
 
 <!DOCTYPE html>
@@ -31,7 +30,7 @@
 	<jsp:include page="header.jsp" flush="false">
 		<jsp:param name="pageTitle" value="SSAFIT" />
 	</jsp:include>
-	<jsp:include page="slide.jsp" flush="false" />	
+	<jsp:include page="slide.jsp" flush="false" />
 	<!-- 여기서부터 메인 시작 -->
 	<main>
 	<div class="container">
@@ -44,21 +43,20 @@
 			<div class="h3">최근 가장 많이 본 영상</div>
 			<div class="d-flex flex-row overflow-auto ">
 				<c:forEach var="v" items="${requestScope.ilist}">
-					<div class="p-2 " style="width: 390px;">
-						<div>
-							<iframe width="380" height="230"
-								src="https://www.youtube.com/embed/${v.youtubeId}"
-								title="YouTube video player" frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen></iframe>
-						</div>
-						<div class="row">
-							<a class="col-10 video-title"
-								href="detail?youtubeId=${v.youtubeId}">${v.title}</a>
-							<div class="col-2 text-end">
-								<i class="bi bi-eye"></i> ${v.viewCnt}
+					<div class="p-2" style="max-width: 390px">
+						<a href="main?act=detail&youtubeId=${v.youtubeId}">
+							<div>
+								<img
+									src="https://img.youtube.com/vi/${v.youtubeId}/maxresdefault.jpg"
+									alt=".." width="380" height="230">
 							</div>
-						</div>
+							<div class="row video-title" width="380">
+								<div class="col-10 ">${v.title}</div>
+								<div class="col-2 text-end">
+									<i class="bi bi-eye"></i> ${v.viewCnt}
+								</div>
+							</div>
+						</a>
 					</div>
 				</c:forEach>
 			</div>
@@ -93,21 +91,22 @@
 			</div>
 
 			<!-- 버튼 밸류에 따라 전신 : wlist, 상체 : ulist, 하체 : llist 바꾸기 -->
-			<div class="d-flex justify-content-start flex-row overflow-auto"
-				id="fitPart">
-				<c:forEach var="v2" items="${wlist}">
-					<div class="p-2 w-380" style="width: 390px;">
-						<div>
-							<iframe width="380" height="230"
-								src="https://www.youtube.com/embed/${v2.youtubeId}"
-								title="YouTube video player" frameborder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowfullscreen></iframe>
-						</div>
-						<div class="row" style="width: 380px;">
-							<a class="col video-title"
-								href="detail?youtubeId=${v2.youtubeId}">${v2.title}</a>
-						</div>
+			<div class="d-flex flex-row overflow-auto" id="fitPart">
+				<c:forEach var="v2" items="${ulist}">
+					<div class="p-2 " style="max-width: 390px">
+						<a href="main?act=detail&youtubeId=${v2.youtubeId}">
+							<div>
+								<img
+									src="https://img.youtube.com/vi/${v2.youtubeId}/maxresdefault.jpg"
+									alt=".." width="380" height="230">
+							</div>
+							<div class="row video-title">
+								<div class="col-10 ">${v2.title}</div>
+								<div class="col-2 text-end">
+									<i class="bi bi-eye"></i> ${v2.viewCnt}
+								</div>
+							</div>
+						</a>
 					</div>
 				</c:forEach>
 			</div>
@@ -119,7 +118,8 @@
 	</main>
 	<jsp:include page="footer.jsp" flush="false" />
 
-	<script src="/06-ssafitDB/js/selectPart.js">/* js로 만들어둠 아래 실행 안됨*/		
+	<script src="/06-ssafitDB/js/selectPart.js">
+		/* js로 만들어둠 아래 실행 안됨*/
 	</script>
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>

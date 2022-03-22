@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafit.model.dao.VideoDao" >
+    <resultMap type="Video" id="videoMap">
+        <result column="youtube_id" property="youtubeId"/>
+        <result column="fit_part_no" property="fitPartNo"/>
+        <result column="title" property="title"/>
+        <result column="channel_name" property="channelName"/>
+        <result column="url" property="url"/>
+        <result column="view_cnt" property="viewCnt"/>
+    </resultMap>
+    
+    <!-- 조회수 비디오 가져오기 -->
+    <select id="selectVideoByViewCnt" resultMap="videoMap">
+        SELECT youtube_id, fit_part_no, title, channel_name, url, view_cnt
+        FROM video
+        ORDER BY view_cnt desc
+    </select>
+    
+    <!-- 부위별 비디오 가져오기 -->
+    <select id="selectVideoByPartNo" resultMap="videoMap">
+        SELECT youtube_id, fit_part_no, title, channel_name, url, view_cnt
+        FROM video
+        WHERE fit_part_no = #{partNo}
+    </select>
+    
+    <!-- 영상하나 불러오기 -->
+    <select id="selectVideoByYoutubeId" resultMap="videoMap">
+        SELECT youtube_id, fit_part_no, title, channel_name, url, view_cnt
+        FROM video
+        WHERE #{youtubeId} = youtube_id
+    </select>
+    
+    <update id="upVideoViewCntByYoutubeId" parameterType="java.lang.String">
+    	UPDATE video 
+    	SET `view_cnt` = `view_cnt` + 1 
+    	WHERE #{youtubeId} = youtube_id
+    </update>
+    
+</mapper>

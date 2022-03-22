@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ssafit.config.MyAppSqlConfig;
 import com.ssafit.model.dao.ReviewDao;
 
-@WebServlet("/review")
+@WebServlet("/ssafit/review")
 public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ReviewDao reviewDao;
@@ -22,9 +22,7 @@ public class ReviewController extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		getProcess(req, res);
-		// detail 페이지 이동, 리뷰 작성, 수정 폼으로 이동
-		// 단순 기능만 구동되는 것은 get으로 구현
+		getProcess(req, res);		
 	}
 
 	@Override
@@ -35,7 +33,13 @@ public class ReviewController extends HttpServlet {
 	}
 
 	private void getProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		String act = req.getParameter("act");
+		String youtubeId = req.getParameter("youtubeId");
+		switch(act) {
+		case "list":
+			
+		}
+		
 	}
 
 	private void postProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

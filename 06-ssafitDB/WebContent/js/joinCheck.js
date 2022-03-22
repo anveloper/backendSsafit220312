@@ -34,7 +34,7 @@ function requestIdCheck(idVal){
 			ms.innerText = msg;
 		}	
 	}
-	xhr.open("GET", "/06-ssafitDB/joincheck?userId=" + idVal);
+	xhr.open("GET", "/06-ssafitDB/ssafit/joincheck?userId=" + idVal);
 	xhr.send();
 };
 		
@@ -70,7 +70,7 @@ function requestPassCheck(passVal){
 			ms.innerText = msg;
 		}	
 	}
-	xhr.open("GET", "/06-ssafitDB/joincheck?password=" + passVal);
+	xhr.open("GET", "/06-ssafitDB/ssafit/joincheck?password=" + passVal);
 	xhr.send(null);
 };
 
@@ -124,7 +124,7 @@ function requestNickCheck(nickVal){
 			ms.innerText = msg;
 		}	
 	}
-	xhr.open("GET", "/06-ssafitDB/joincheck?nickname=" + nickVal);
+	xhr.open("GET", "/06-ssafitDB/ssafit/joincheck?nickname=" + nickVal);
 	xhr.send(null);
 };
 

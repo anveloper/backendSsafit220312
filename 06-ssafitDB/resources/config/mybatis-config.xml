@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<properties resource="config/db.properties" />
 	<typeAliases>
-		<typeAlias type="com.sssafit.model.Video" alias="Video" />
-		<typeAlias type="com.sssafit.model.Review" alias="Review" />
-		<typeAlias type="com.sssafit.model.Member" alias="Member" />
+		<typeAlias type="com.ssafit.model.Video" alias="Video" />
+		<typeAlias type="com.ssafit.model.Review" alias="Review" />
+		<typeAlias type="com.ssafit.model.Member" alias="Member" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -24,8 +24,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	<mappers>
 		<mapper resource="mapper/video.xml" />
-		<mapper resource="mapper/review.xml" />
-		<mapper resource="mapper/member.xml" />
+		<!-- <mapper resource="mapper/review.xml" />
+		<mapper resource="mapper/member.xml" /> -->
 	</mappers>
 
 </configuration>

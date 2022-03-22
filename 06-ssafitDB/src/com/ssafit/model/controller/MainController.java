@@ -7,11 +7,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.soap.Detail;
 
 import com.ssafit.config.MyAppSqlConfig;
+import com.ssafit.model.Video;
 import com.ssafit.model.dao.VideoDao;
 
-@WebServlet("/main")
+@WebServlet("/ssafit/main")
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private VideoDao videoDao;
@@ -35,22 +37,36 @@ public class MainController extends HttpServlet {
 	}
 
 	private void getProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		if(!req.getParameterMap().containsKey("act")) { // main
+		if (!req.getParameterMap().containsKey("act")) { // main
 			System.out.println("main page 이동");
-			req.setAttribute("ilist", videoDao.selectInterestViewFitVideo());
-			req.setAttribute("wlist", videoDao.selectPartFitVideo(1));
-			req.setAttribute("ulist", videoDao.selectPartFitVideo(2));
-			req.setAttribute("llist", videoDao.selectPartFitVideo(3));
-			req.setAttribute("clist", videoDao.selectPartFitVideo(4));		
+			req.setAttribute("ilist", videoDao.selectVideoByViewCnt());
+			req.setAttribute("wlist", videoDao.selectVideoByPartNo(1));
+			req.setAttribute("ulist", videoDao.selectVideoByPartNo(2));
+			req.setAttribute("llist", videoDao.selectVideoByPartNo(3));
+			req.setAttribute("clist", videoDao.selectVideoByPartNo(4));
 			req.getRequestDispatcher("main.jsp").forward(req, res);
+			return;
 		}
 		String act = req.getParameter("act");
-		
-		
+		switch (act) {
+		case "detail":
+			Detail(req, res);
+			break;
+		}
+
 	}
 
 	private void postProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 	}
 
+	private void Detail(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String youtubeId = req.getParameter("youtubeId");
+		Video video = videoDao.selectVideoByYoutubeId(youtubeId);
+		videoDao.upVideoViewCntByYoutubeId(youtubeId);
+		req.setAttribute("video", video);
+		req.getRequestDispatcher("review?act=list&youtubeId=" + video.getYoutubeId()).forward(req, res);
+	}
+
 }
+

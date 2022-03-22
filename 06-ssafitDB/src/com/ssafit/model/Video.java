@@ -2,15 +2,15 @@ package com.ssafit.model;
 
 public class Video {
 	private String title;
-	private String fitPartName;
+	private int fitPartNo;
 	private String youtubeId;
 	private String channelName;
 	private String url;
 	private int viewCnt;
 
-	public Video(String title, String fitPartName, String youtubeId, String channelName, String url) {
+	public Video(String title, int fitPartNo, String youtubeId, String channelName, String url) {
 		this.title = title;
-		this.fitPartName = fitPartName;
+		this.fitPartNo = fitPartNo;
 		this.youtubeId = youtubeId;
 		this.channelName = channelName;
 		this.url = url;
@@ -25,12 +25,12 @@ public class Video {
 		this.title = title;
 	}
 
-	public String getFitPartName() {
-		return fitPartName;
+	public int getFitPartNo() {
+		return fitPartNo;
 	}
 
-	public void setFitPartName(String fitPartName) {
-		this.fitPartName = fitPartName;
+	public void setFitPartName(int fitPartNo) {
+		this.fitPartNo = fitPartNo;
 	}
 
 	public String getYoutubeId() {

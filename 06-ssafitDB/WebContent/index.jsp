@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	response.sendRedirect("/06-ssafitDB/main");
+	response.sendRedirect("/06-ssafitDB/ssafit/main");
 %>
 <html>
 <head>
