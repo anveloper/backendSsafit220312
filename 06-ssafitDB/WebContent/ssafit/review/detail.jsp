@@ -52,10 +52,9 @@
 
 				<div style="padding-top: 10px;">
 					<input name="youtubeId" value="${review.youtubeId}" hidden/>
+					<a class="btn btn-secondary" href="review?act=updateForm&reviewNo=${review.reviewNo}">수정</a> 
+					<a class="btn btn-secondary" onclick="deleteConfirm()">삭제</a> 
 					<a class="btn btn-secondary"
-						href="review?act=updateForm&reviewNo=${review.reviewNo}">수정</a> <a
-						class="btn btn-secondary" onclick="deleteConfirm()">삭제</a> <a
-						class="btn btn-secondary"
 						href="/06-ssafitDB/ssafit/main?act=detail&youtubeId=${review.youtubeId}">돌아가기</a>
 				</div>
 				<br>

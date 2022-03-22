@@ -94,14 +94,14 @@ public class ReviewController extends HttpServlet {
 
 	private void insertReview(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String youtubeId = req.getParameter("youtubeId");
-		reviewDao.insertReview(new Review(req.getParameter("youtubeId"), req.getParameter("title"), req.getParameter("userId"),
-				req.getParameter("content")));
+		reviewDao.insertReview(new Review(req.getParameter("youtubeId"), req.getParameter("title"),
+				req.getParameter("userId"), req.getParameter("content")));
 
 		res.sendRedirect("main?act=detail&youtubeId=" + youtubeId);
 	}
 
 	private void updateForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		int reviewNo = Integer.parseInt(req.getParameter("reviewNo"));		
+		int reviewNo = Integer.parseInt(req.getParameter("reviewNo"));
 		req.setAttribute("youtubeId", req.getParameter("youtubeId"));
 		req.setAttribute("review", reviewDao.selectReview(reviewNo));
 		req.getRequestDispatcher("review/updateForm.jsp").forward(req, res);
@@ -109,7 +109,8 @@ public class ReviewController extends HttpServlet {
 
 	private void updateReview(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String reviewNo = req.getParameter("reviewNo");
-		Review review = new Review(Integer.parseInt(req.getParameter("reviewNo")), req.getParameter("title"),req.getParameter("content"));		
+		Review review = new Review(Integer.parseInt(req.getParameter("reviewNo")), req.getParameter("title"),
+				req.getParameter("content"));
 		reviewDao.updateReview(review);
 		res.sendRedirect("review?act=detail&reviewNo=" + reviewNo);
 	}
@@ -117,10 +118,12 @@ public class ReviewController extends HttpServlet {
 	private void deleteReview(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		int reviewNo = Integer.parseInt(req.getParameter("reviewNo"));
 		Review review = reviewDao.selectReview(reviewNo);
+		String youtubeId = review.getYoutubeId();
 //		HttpSession session = req.getSession();
 //		String logonId = session.getAttribute("userId").toString();
 		String logonId = "asdf";
-		if (logonId != review.getUserId()) {
+		System.out.println(review.getUserId());
+		if (!logonId.equals(review.getUserId())) {
 			res.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = res.getWriter();
 			writer.println(
@@ -128,8 +131,7 @@ public class ReviewController extends HttpServlet {
 			writer.close();
 			return;
 		}
-		System.out.println(review.toString());
-		req.setAttribute("review", review);
-		req.getRequestDispatcher("review/detail.jsp").forward(req, res);
+		reviewDao.deleteReview(reviewNo);
+		res.sendRedirect("main?act=detail&youtubeId=" + youtubeId);
 	}
 }
