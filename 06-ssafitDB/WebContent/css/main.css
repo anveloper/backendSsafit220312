@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'ROKAFSlabSerifBold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSlabSerifBold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	font-family: 'ROKAFSlabSerifBold';
+}
+
+.video-title {
+	color: black;
+	text-decoration-line: none;
+}
+
+footer>ul {
+	text-decoration: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+footer {
+	background-color: #cfcfcf;
+	min-height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center
+}
+
+footer>ul {
+	list-style: none;
+	display: flex;
+	flex-basis: 750px;
+	justify-content: space-between;
+}
+
+footer>ul>li {
+	font-size: 1rem;
+	color: rgb(0, 0, 0);
+}
+
+footer>ul>li>a {
+	text-decoration: none;
+	font-weight: bold;
+	color: rgb(0, 0, 0);
+}

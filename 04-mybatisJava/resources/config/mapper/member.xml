@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.dao.TestDao">
+	<select id="selectMember" resultType="member">
+		SELECT id, name, addr, email,
+			   date_format(join_date, '%Y-%m-%d') joinDate
+		  FROM mybatis_member
+		 ORDER BY id
+	</select>
+	<select id="selectMemberById" parameterType="string"
+		resultType="m">
+		SELECT id, name, addr, email,
+		       date_format(join_date, '%Y-%m-%d') joinDate
+		  FROM mybatis_member
+		 WHERE id = #{id}
+	</select>
+	<select id="selectMemberByInfo" parameterType="member"
+		resultType="string">
+		SELECT name
+		  FROM mybatis_member
+		 WHERE id = #{id}
+		   AND email = #{email}
+	</select><!-- Member 객체를 파라미터로 주었을때, get-method가 있어야 #{}을 사용할 수 있다. -->
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO mybatis_member (
+			   id, name, email, addr
+		       ) 
+		VALUES (
+		       #{id}, #{name}, #{email}, #{addr}
+		       )
+	</insert>
+	<delete id="deleteMember" parameterType="string">
+		DELETE
+		  FROM mybatis_member
+		 WHERE id = #{id}
+	</delete>
+	<update id="updateMember" parameterType="member">
+		UPDATE mybatis_member
+		   SET email = #{email}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>
