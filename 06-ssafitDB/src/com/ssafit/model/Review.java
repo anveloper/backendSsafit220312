@@ -5,6 +5,7 @@ public class Review {
 	private String youtubeId;
 	private String title;
 	private String userId;
+	private int memberNo;
 	private String content;
 	private String regDate;
 	private int viewCnt;
@@ -13,13 +14,26 @@ public class Review {
 	}
 
 	public Review(String youtubeId, String title, String userId, String content) {
-
 		this.youtubeId = youtubeId;
 		this.title = title;
 		this.userId = userId;
 		this.content = content;
 	}
-
+	
+	public Review(int reviewNo, String title, String content) {
+		this.reviewNo = reviewNo;
+		this.title = title;
+		this.content = content;
+	}
+	
+//	public Review(String youtubeId, String title, int memberNo, String content) {
+//
+//		this.youtubeId = youtubeId;
+//		this.title = title;
+//		this.memberNo = memberNo;
+//		this.content = content;
+//	}
+	
 	public int getReviewNo() {
 		return reviewNo;
 	}
@@ -76,4 +90,17 @@ public class Review {
 		this.viewCnt = viewCnt;
 	}
 
+	@Override
+	public String toString() {
+		return this.reviewNo + " :: " + this.youtubeId + " :: " + this.title + " :: " + this.userId + " :: "
+				+ this.content + " :: " + this.regDate + " :: " + this.viewCnt;
+	}
+
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
 }

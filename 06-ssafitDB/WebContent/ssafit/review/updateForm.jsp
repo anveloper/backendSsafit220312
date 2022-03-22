@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-      request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 %>
 
 <!DOCTYPE html>
@@ -26,17 +26,18 @@
 	</jsp:include>
 	<!-- 여기서부터 메인 시작 -->
 	<div class="container">
-		<form method="post"
-			action="/03-ssafit/ssafit/review/update?youtubeId=${youtubeId}&no=${review.no}">
+		<form method="post" action="/06-ssafitDB/ssafit/review?act=update">
 			<div class="container">
+				<input type="hidden" name="youtubeId" value="${review.youtubeId}" /> 
+				<input type="hidden" name="reviewNo" value="${review.reviewNo}" />
 				<div class="form-floating">
 					<textarea class="form-control" name="title" id="floatingTextarea1"><c:out
 							value="${review.title}" /></textarea>
 					<label for="floatingTextarea1">제목</label>
 				</div>
 				<div class="form-floating">
-					<textarea class="form-control" name="writer" id="floatingTextarea2"><c:out
-							value="${review.writer}" /></textarea>
+					<textarea class="form-control" name="userId" id="floatingTextarea2"
+						readonly><c:out value="${review.userId}" /></textarea>
 					<label for="floatingTextarea2">작성자</label>
 				</div>
 
@@ -51,9 +52,9 @@
 			</div>
 		</form>
 	</div>
-	
+
 	<jsp:include page="../footer.jsp" flush="false" />
-	
+
 	<!-- JavaScript Bundle with Popper -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

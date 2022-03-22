@@ -6,4 +6,6 @@ public interface MemberDao {
 
 	boolean isExistedNickname(String nickname);
 
+	public int getWriterNoByUserId(String string);
+
 }

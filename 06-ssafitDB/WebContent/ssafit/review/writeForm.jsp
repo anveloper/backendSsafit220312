@@ -24,8 +24,8 @@
 	</jsp:include>
 	<!-- 여기서부터 메인 시작 -->
 	<div class="container">
-		<form method="post"
-			action="/03-ssafit/ssafit/review/write?youtubeId=${youtubeId}">
+		<form method="post" action="/06-ssafitDB/ssafit/review?act=insert">
+			<input type="hidden" name="youtubeId" value="${youtubeId}"/>
 			<div class="form-floating">
 				<textarea class="form-control" placeholder="Leave a comment here"
 					id="floatingTextarea" name="title"></textarea>
@@ -33,7 +33,7 @@
 			</div>
 			<div class="form-floating">
 				<textarea class="form-control" placeholder="Leave a comment here"
-					id="floatingTextarea" name="writer"></textarea>
+					id="floatingTextarea" name="userId"></textarea>
 				<label for="floatingTextarea">작성자</label>
 			</div>
 

@@ -50,7 +50,7 @@
 				<c:forEach var="r" items="${rlist}">
 					<tr class="row">
 						<td class="col-7"><a
-							href="review/detail?youtubeId=${video.youtubeId}&no=${r.reviewNo}"
+							href="review?act=detail&reviewNo=${r.reviewNo}"
 							style="color: black; text-decoration-line: none;"> <c:out
 									value="${r.title}" /></a></td>
 						<td class="col-3"><c:out value="${r.userId}" /></td>
@@ -62,7 +62,7 @@
 			<div>
 				<!-- <a href="/02-board/board/write">글쓰기</a> -->
 				<a class="btn btn-secondary"
-					href="review/write?youtubeId=${video.youtubeId}">글쓰기</a>
+					href="review?act=writeForm&youtubeId=${video.youtubeId}">글쓰기</a>
 			</div>
 			<br>
 		</div>

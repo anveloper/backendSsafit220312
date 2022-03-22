@@ -15,8 +15,11 @@ public interface ReviewDao {
     public Review selectReview(int reviewNo);
     
     // 리뷰 수정
-    public void updateReview(int no);
+    public void updateReview(Review review);
     
     // 리뷰 삭제
-    public void deleteReview(int no);
+    public void deleteReview(int reviewNo);
+    
+    public void upReviewViewCntByReviewNo(int reviewNo);
+
 }
