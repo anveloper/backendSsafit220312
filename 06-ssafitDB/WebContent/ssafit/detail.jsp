@@ -50,10 +50,10 @@
 				<c:forEach var="r" items="${rlist}">
 					<tr class="row">
 						<td class="col-7"><a
-							href="review/detail?youtubeId=${video.youtubeId}&no=${r.no}"
+							href="review/detail?youtubeId=${video.youtubeId}&no=${r.reviewNo}"
 							style="color: black; text-decoration-line: none;"> <c:out
 									value="${r.title}" /></a></td>
-						<td class="col-3"><c:out value="${r.writer}" /></td>
+						<td class="col-3"><c:out value="${r.userId}" /></td>
 						<td class="col-2"><c:out value="${r.viewCnt}" /></td>
 					</tr>
 				</c:forEach>

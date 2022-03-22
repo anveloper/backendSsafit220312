@@ -21,7 +21,7 @@
 	<div class="container">
 		<header
 			class="d-flex align-items-end justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-			<a href="/03-ssafit/ssafit/main"
+			<a href="/06-ssafitDB/ssafit/main"
 				class="d-flex align-items-center   text-dark text-decoration-none">
 				<h1><%=pageTitle%></h1>
 			</a>
