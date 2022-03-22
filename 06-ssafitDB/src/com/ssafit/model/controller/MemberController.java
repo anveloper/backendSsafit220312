@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ssafit.config.MyAppSqlConfig;
-import com.ssafit.model.dao.VideoDao;
+import com.ssafit.model.dao.MemberDao;
 
-@WebServlet("/main")
-public class MainController extends HttpServlet {
+@WebServlet("/member")
+public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private VideoDao videoDao;
+	private MemberDao memberDao;
 
-	public MainController() {
-		videoDao = MyAppSqlConfig.getSession().getMapper(VideoDao.class);
+	public MemberController() {
+		memberDao = MyAppSqlConfig.getSession().getMapper(MemberDao.class);
 	}
 
 	@Override
@@ -35,18 +35,7 @@ public class MainController extends HttpServlet {
 	}
 
 	private void getProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		if(!req.getParameterMap().containsKey("act")) { // main
-			System.out.println("main page 이동");
-			req.setAttribute("ilist", videoDao.selectInterestViewFitVideo());
-			req.setAttribute("wlist", videoDao.selectPartFitVideo(1));
-			req.setAttribute("ulist", videoDao.selectPartFitVideo(2));
-			req.setAttribute("llist", videoDao.selectPartFitVideo(3));
-			req.setAttribute("clist", videoDao.selectPartFitVideo(4));		
-			req.getRequestDispatcher("main.jsp").forward(req, res);
-		}
-		String act = req.getParameter("act");
-		
-		
+
 	}
 
 	private void postProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

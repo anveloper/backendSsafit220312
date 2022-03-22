@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/03-ssafit/css/main.css" rel="stylesheet" />
+<link href="/06-ssafitDB/css/main.css" rel="stylesheet" />
 </head>
 <body>
 	<div>

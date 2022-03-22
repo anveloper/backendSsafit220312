@@ -17,7 +17,7 @@
 <meta charset="UTF-8">
 <title>SSAFIT</title>
 
-<link href="/03-ssafit/css/main.css" rel="stylesheet" />
+<link href="/06-ssafitDB/css/main.css" rel="stylesheet" />
 <!-- CSS only -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -119,7 +119,7 @@
 	</main>
 	<jsp:include page="footer.jsp" flush="false" />
 
-	<script src="/03-ssafit/js/selectPart.js">/* js로 만들어둠 아래 실행 안됨*/		
+	<script src="/06-ssafitDB/js/selectPart.js">/* js로 만들어둠 아래 실행 안됨*/		
 	</script>
 	<script type="text/javascript"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>

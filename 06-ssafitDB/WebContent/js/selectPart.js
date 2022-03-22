@@ -30,6 +30,6 @@ function selectPart(fitPart) {
 			document.querySelector("#fitPart").innerHTML = videoHtml;
 		}
 	}
-	xhr.open("GET", "/03-ssafit/data/video.json", true);
+	xhr.open("GET", "/06-ssafitDB/data/video.json", true);
 	xhr.send(null);
 };
